@@ -1,8 +1,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
+import SideNav from "src/pages/side-nav";
 import { api } from "~/utils/api";
-import Form from "../components/common/form/form"
+import Form from "../components/common/form/form";
 import { FormikValues } from "formik";
 import AppTextInput from "~/components/common/form/AppTextInput";
 import AppRadioInput from "~/components/common/form/AppRadioInput";
@@ -13,26 +14,32 @@ import Button from "@mui/material/Button";
 export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
   const genderOptions = [
-    { label: 'Male', value: 'male' },
-    { label: 'Female', value: 'female' },
-    { label: 'Other', value: 'other' },
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+    { label: "Other", value: "other" },
   ];
 
   return (
     <>
+      <SideNav />
       <div>
-        <Form 
+        <Form
           handleSubmit={function (values: FormikValues): void {
             throw new Error("Function not implemented.");
-          } } 
+          }}
           handleChanged={function (values: FormikValues): void {
             throw new Error("Function not implemented.");
-          } }>
+          }}
+        >
           <div>
-            <AppTextInput label="Name" name="name" type=""/>
-            <AppTextInput label="Email" name="email" type="email"/>
-            <AppTextInput label="Password" name="password" type="password"/>
-            <AppRadioInput label="Gender" name="gender" options={genderOptions} />
+            <AppTextInput label="Name" name="name" type="" />
+            <AppTextInput label="Email" name="email" type="email" />
+            <AppTextInput label="Password" name="password" type="password" />
+            <AppRadioInput
+              label="Gender"
+              name="gender"
+              options={genderOptions}
+            />
             <AppTextbox label="Description" name="description" />
             <Button variant="text">Text</Button>
           </div>
@@ -90,23 +97,10 @@ function AuthShowcase() {
 
   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined }
+    { enabled: sessionData?.user !== undefined },
   );
 
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
-      <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
-    </div>
-  );
+  return <SideNav />;
 }
 
 // import React from 'react';
@@ -136,6 +130,151 @@ function AuthShowcase() {
 //     bio: '',
 //     birthdate: '',
 
+//     gender: 'male',
+//     acceptTerms: false,
+//     favoriteColor: '',
+//   };
+
+//   const onSubmit = (values: FormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+//     // Handle form submission logic here
+//     console.log(values);
+//     setSubmitting(false);
+//   };
+
+//   return (
+//     <div style={formSpacingStyle}>
+//       <h1>Material-UI Formik Example</h1>
+//       <Formik initialValues={initialValues} onSubmit={onSubmit}>
+//         <Form>
+//           <div style={formSpacingStyle}>
+//             <TextField
+//               label="Email"
+//               type="email"
+//               name="email"
+//               variant="outlined"
+//               fullWidth
+//             />
+//             <ErrorMessage name="email" component="div" />
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <TextField
+//               label="Password"
+//               type="password"
+//               name="password"
+//               variant="outlined"
+//               fullWidth
+//             />
+//             <ErrorMessage name="password" component="div" />
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <TextField
+//               label="Bio"
+//               multiline
+//               name="bio"
+//               rows={4}
+//               variant="outlined"
+//               fullWidth
+//             />
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <TextField
+//               label="Birthdate"
+//               type="date"
+//               name="birthdate"
+//               variant="outlined"
+//               fullWidth
+//             />
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <FormControl component="fieldset">
+//               <RadioGroup row name="gender" >
+//                 <FormControlLabel value="male" control={<Radio />} label="Male" />
+//                 <FormControlLabel value="female" control={<Radio />} label="Female" />
+//                 <FormControlLabel value="other" control={<Radio />} label="Other" />
+//               </RadioGroup>
+//             </FormControl>
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <FormControlLabel
+//               control={<Checkbox color="primary" />}
+//               label="I accept the terms and conditions"
+//               name="acceptTerms"
+//             />
+//             <FormControlLabel
+//               control={<Checkbox color="primary" />}
+//               label="I love the terms and conditions"
+//               name="loveTerms"
+//             />
+//             <FormControlLabel
+//               control={<Checkbox color="primary" />}
+//               label="I adore the terms and conditions"
+//               name="adoreTerms"
+//             />
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <FormControl variant="outlined" fullWidth>
+//               <Select
+//                 label="Favorite Color"
+//                 name="favoriteColor"
+//               >
+//                 <MenuItem value="" disabled selected>
+//                   <em>Choose a color...</em>
+//                 </MenuItem>
+//                 <MenuItem value="red">Red</MenuItem>
+//                 <MenuItem value="blue">Blue</MenuItem>
+//                 <MenuItem value="green">Green</MenuItem>
+//               </Select>
+//             </FormControl>
+//           </div>
+
+//           <div style={formSpacingStyle}>
+//             <FormControlLabel
+//               control={<Switch name="over18" />}
+//               label="Over 18?"
+//             />
+//           </div>
+
+//           <button type="submit">Submit</button>
+//         </Form>
+//       </Formik>
+//     </div>
+//   );
+// };
+
+// export default MyFormik;
+
+// import React from 'react';
+// import { Formik, Form, ErrorMessage } from 'formik';
+// import { TextField, Radio, RadioGroup, FormControlLabel, Checkbox, FormControl, Select, Switch, MenuItem } from '@mui/material';
+
+// const formSpacingStyle = {
+//   marginBottom: '20px',
+//   paddingLeft: '10px',
+//   paddingRight: '10px',
+// }
+
+// interface FormValues {
+//   email: string;
+//   password: string;
+//   bio: string;
+//   birthdate: string;
+//   gender: string;
+//   acceptTerms: boolean;
+//   favoriteColor: string;
+// }
+
+// const MyFormik: React.FC = () => {
+//   const initialValues: FormValues = {
+//     email: '',
+//     password: '',
+//     bio: '',
+//     birthdate: '',
 
 //     gender: 'male',
 //     acceptTerms: false,
