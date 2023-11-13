@@ -17,11 +17,9 @@ import TopNavigationBar from '../../layout/top-nav';
 // }
 
 type FormProps = ComponentPropsWithoutRef<"form"> & {
-    children: React.ReactNode; // Change the type of children to React.ReactNode
     handleSubmit: (values: FormikValues) => void;
     handleChanged: (values: FormikValues) => void;
-    overrideInitialValues?: FormikValues | null;
-    // yupValidation?: yupAnyObject;
+    // initalValues: FormikValues;
   };
 
 const validationSchema = Yup.object().shape({
@@ -31,11 +29,11 @@ const validationSchema = Yup.object().shape({
   description: Yup.string(),
 });
 
-const Form = ({children}: FormProps) => {
+const Form = ({children, ...props}: FormProps) => {
   const handleSubmit = (values: FormikValues, actions: any) => {
     // Handle form submission logic here
     console.log(values);
-    actions.setSubmitting(false);
+    // actions.setSubmitting(false);
   };
 
   const handleTabChange = (value: number) => {
@@ -61,16 +59,18 @@ const Form = ({children}: FormProps) => {
   return (
     <Formik
       initialValues={{ name: '', gender: '', hobbies: [], description: '' }}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-    <TopNavigationBar onTabChange={handleTabChange}/>
-      <form>
-        <div style={{ marginTop: '100px' }}>
-            <AppDataGrid rows={rows} />
-        </div>
-        {/* {children} */}
-      </form>
+      <div>
+        <TopNavigationBar onTabChange={handleTabChange}/>
+        <form>
+          <div style={{ marginTop: '100px' }}>
+              <AppDataGrid rows={rows} />
+          </div>
+          {children}
+        </form>
+      </div>
     </Formik>
   );
 };
