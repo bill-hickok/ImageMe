@@ -9,26 +9,26 @@ const TopNavigationBar: React.FC<NavigationBarProps> = ({ onTabChange }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    console.log(event);
     setValue(newValue);
     onTabChange(newValue);
   };
 
   return (
-    <AppBar position="static" style={{ backgroundColor: 'white', color: 'black', height: '64px' }}>
+    <div style={{ backgroundColor: 'white', color: 'black', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Typography variant="h4" style={{ padding: '8px', color: 'black' }}>
+        Mapping Configurations
+      </Typography>
       <Tabs
         value={value}
         onChange={handleChange}
-        style={{ marginRight: 'auto', display: 'flex', alignItems: 'center' }}
       >
-        <Typography variant="h6" style={{ marginLeft: 'auto', padding: '8px', color: 'black' }}>
-          Mapping Configurations
-        </Typography>
         <Tab label="Document Types" />
         <Tab label="XML Mappings" />
         <Tab label="Legacy to Onbase" />
         <Tab label="Activity Log" />
       </Tabs>
-    </AppBar>
+    </div>
   );
 };
 

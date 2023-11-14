@@ -1,6 +1,7 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
+import SideNav from "src/components/layout/side-nav";
 
 import { api } from "~/utils/api";
 
@@ -12,7 +13,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <SideNav />
+      <div style={{ margin: '40px', marginTop: '120px' }}>
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   );
 };

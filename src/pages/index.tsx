@@ -1,7 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import SideNav from "src/pages/side-nav";
 import { api } from "~/utils/api";
 import Form from "../components/common/form/form";
 import { FormikValues } from "formik";
@@ -21,7 +20,6 @@ export default function Home() {
 
   return (
     <>
-      <SideNav />
       <div>
         <Form
           handleSubmit={function (values: FormikValues): void {
@@ -92,16 +90,16 @@ export default function Home() {
   );
 }
 
-function AuthShowcase() {
-  const { data: sessionData } = useSession();
+// function AuthShowcase() {
+//   const { data: sessionData } = useSession();
 
-  const { data: secretMessage } = api.post.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined },
-  );
+//   const { data: secretMessage } = api.post.getSecretMessage.useQuery(
+//     undefined, // no input
+//     { enabled: sessionData?.user !== undefined },
+//   );
 
-  return <SideNav />;
-}
+//   return <SideNav />;
+// }
 
 // import React from 'react';
 // import { Formik, Form, ErrorMessage } from 'formik';

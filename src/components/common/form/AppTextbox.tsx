@@ -9,7 +9,6 @@ interface TextareaInputProps {
 
 const AppTextbox: React.FC<TextareaInputProps> = ({ label, name }) => (
   <div>
-    <label htmlFor={name}>{label}:</label>
     <Field name={name}>
       {({ field, meta }: FieldProps) => (
         <div>
