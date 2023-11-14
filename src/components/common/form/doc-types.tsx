@@ -2,6 +2,7 @@
 import React from "react";
 import AppDataGrid from "./AppDataGrid";
 import { type GridColDef } from "@mui/x-data-grid";
+import { Button } from "@mui/material";
 
 const DocTypes = () => {
   const columns: GridColDef[] = [
@@ -123,6 +124,7 @@ const DocTypes = () => {
 
   return (
     <div style={{ marginTop: "100px" }}>
+      <Button variant="contained">Add New Doc Type +</Button>
       <AppDataGrid rows={rows} columns={columns} />
     </div>
   );
