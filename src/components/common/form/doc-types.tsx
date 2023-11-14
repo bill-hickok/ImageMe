@@ -1,7 +1,20 @@
 // ParentForm.tsx
-import React from "react";
+import React, { useState } from "react";
 import AppDataGrid from "./AppDataGrid";
-import { type GridColDef } from "@mui/x-data-grid";
+import { type GridColDef, GridActionsCellItem } from "@mui/x-data-grid";
+import { Tooltip } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import Modal from "../modal/modal";
+
+// const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal open/close
+
+const handleOpenModal = () => {
+  setIsModalOpen(true);
+};
+
+const handleCloseModal = () => {
+  setIsModalOpen(false);
+};
 
 const DocTypes = () => {
   const columns: GridColDef[] = [
@@ -60,6 +73,22 @@ const DocTypes = () => {
       flex: 1,
       headerClassName: "header-cell",
       cellClassName: "bold-cell",
+    },
+    {
+      field: "Actions",
+      type: "actions",
+      width: 80,
+      getActions: (params) => [
+        <GridActionsCellItem
+          icon={(
+            <Tooltip title="Details">
+              <EditIcon />
+            </Tooltip>
+          )}
+          label="See doc details"
+          onClick={handleOpenModal}
+        />,
+      ],
     },
   ];
 
@@ -124,6 +153,28 @@ const DocTypes = () => {
   return (
     <div style={{ marginTop: "100px" }}>
       <AppDataGrid rows={rows} columns={columns} />
+      {/* <Modal open={true} handleClose={handleCloseModal} title={"Test Modal"}> */}
+        {/* <Form
+          handleSubmit={function (values: FormikValues): void {
+            throw new Error("Function not implemented.");
+          }}
+          handleChanged={function (values: FormikValues): void {
+            throw new Error("Function not implemented.");
+          }}
+        >
+          <div>
+            <AppTextInput label="Name" name="name" type="" />
+            <AppTextInput label="Email" name="email" type="email" />
+            <AppTextInput label="Password" name="password" type="password" />
+            <AppRadioInput
+              label="Gender"
+              name="gender"
+              options={genderOptions}
+            />
+            <AppTextbox label="Description" name="description" />
+          </div>
+        </Form> */}
+      {/* </Modal> */}
     </div>
   );
 };

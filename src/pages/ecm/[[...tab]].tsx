@@ -7,6 +7,7 @@ import AppRadioInput from "~/components/common/form/AppRadioInput";
 import AppTextbox from "~/components/common/form/AppTextbox";
 import Button from "@mui/material/Button";
 import TopNavigationBar from "~/components/layout/top-nav";
+import Modal from "~/components/common/modal/modal";
 import Form from "~/components/common/form/form";
 // import TopNavigationBar from '../../layout/top-nav';
 import { Ref, useState } from "react";
@@ -22,6 +23,16 @@ export default function Home() {
 
   const changeTab = (tab: number) => {
     setTab(tab);
+  };
+  
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal open/close
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -46,7 +57,29 @@ export default function Home() {
               options={genderOptions}
             />
             <AppTextbox label="Description" name="description" />
-            <Button variant="text">Text</Button>
+            <Modal open={isModalOpen} handleClose={handleCloseModal} title={"Test Modal"}>
+              <Form
+                handleSubmit={function (values: FormikValues): void {
+                  throw new Error("Function not implemented.");
+                }}
+                handleChanged={function (values: FormikValues): void {
+                  throw new Error("Function not implemented.");
+                }}
+              >
+                <div>
+                  <AppTextInput label="Name" name="name" type="" />
+                  <AppTextInput label="Email" name="email" type="email" />
+                  <AppTextInput label="Password" name="password" type="password" />
+                  <AppRadioInput
+                    label="Gender"
+                    name="gender"
+                    options={genderOptions}
+                  />
+                  <AppTextbox label="Description" name="description" />
+                </div>
+              </Form>
+            </Modal>
+            <Button variant="text" onClick={handleOpenModal}>Open Modal</Button>
           </div>
         </Form>
       </div>
