@@ -20,7 +20,6 @@ export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
-    console.log(event);
     if (
       event.type === "keydown" &&
       ((event as React.KeyboardEvent).key === "Tab" ||
