@@ -1,10 +1,15 @@
 import type { Account, AuthOptions, Profile, Session } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
 import AzureADProvider from "next-auth/providers/azure-ad";
 
 export const options: AuthOptions = {
   providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    }),
     AzureADProvider({
       clientId: process.env.AZURE_AD_CLIENT_ID ?? "",
       clientSecret: process.env.AZURE_AD_CLIENT_SECRET ?? "",
