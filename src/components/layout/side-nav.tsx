@@ -8,46 +8,49 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 export default function TemporaryDrawer() {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
-  
-  const toggleDrawer =
-    (newValue: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-        console.log("newValue", newValue);
-        console.log("event", event);
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
 
-      setOpen(newValue);
-    };
+  const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
+    console.log(event);
+    if (
+      event.type === "keydown" &&
+      ((event as React.KeyboardEvent).key === "Tab" ||
+        (event as React.KeyboardEvent).key === "Shift")
+    ) {
+      return;
+    }
+
+    setOpen(!open);
+  };
   const list = () => (
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={toggleDrawer}
+      onKeyDown={toggleDrawer}
     >
       <List>
-        {[{text: "ECM Department", route: "ecm"}, {text: "Other Departments", route: "other"}].map((obj, index) => (
-          <ListItem onClick={async (e) => {
-            await router.push(
-              `/ecm/${obj.route}`,
-            );
-          }} key={obj.text} disablePadding>
+        {[
+          { text: "Home", route: "" },
+          { text: "ECM Department", route: "ecm" },
+          { text: "Other Departments", route: "other" },
+        ].map((obj) => (
+          <ListItem
+            onClick={async () => {
+              await router.push(`/${obj.route}`);
+            }}
+            key={obj.text}
+            disablePadding
+          >
             <ListItemButton>
               <ListItemText primary={obj.text} />
             </ListItemButton>
@@ -66,7 +69,7 @@ export default function TemporaryDrawer() {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={toggleDrawer(!open)}
+              onClick={toggleDrawer}
               edge="start"
               sx={{ mr: 2, ...(open && { display: "none" }) }}
             >
@@ -75,7 +78,7 @@ export default function TemporaryDrawer() {
             <Typography>Internal Portal</Typography>
           </Toolbar>
         </AppBar>
-        <Drawer anchor={"left"} open={open} onClose={toggleDrawer(false)}>
+        <Drawer anchor={"left"} open={open} onClose={toggleDrawer}>
           {list()}
         </Drawer>
       </React.Fragment>

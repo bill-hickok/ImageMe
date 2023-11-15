@@ -14,7 +14,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <SideNav />
-      <div style={{ margin: '40px', marginTop: '120px' }}>
+      <div style={{ margin: "40px", marginTop: "120px" }}>
         <Component {...pageProps} />
       </div>
     </SessionProvider>
