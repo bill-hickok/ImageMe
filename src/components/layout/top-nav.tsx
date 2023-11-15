@@ -49,7 +49,7 @@ const TopNavigationBar = ({ children, selectedTab, setSelectedTab, title }: TopN
 export default TopNavigationBar;
 
 // const enum Tabs {
-//   DocTypes: "Document Types",
+//   DocTypes,
 //   Keywords,
 //   XMLMappings,
 //   LegacyToOnBase,
