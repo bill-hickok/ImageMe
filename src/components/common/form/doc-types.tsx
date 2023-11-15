@@ -152,6 +152,7 @@ const DocTypes = () => {
 
   return (
     <div style={{ marginTop: "100px" }}>
+      <Button variant="contained">Add New Doc Type +</Button>
       <AppDataGrid rows={rows} columns={columns} />
       {/* <Modal open={true} handleClose={handleCloseModal} title={"Test Modal"}> */}
         {/* <Form

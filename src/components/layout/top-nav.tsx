@@ -4,23 +4,19 @@ import DocTypes from "../common/form/doc-types";
 import XmlMappings from "../common/form/keywords";
 import Keywords from "../common/form/keywords";
 
-interface NavigationBarProps {
-  onTabChange: (value: number) => void;
-}
-
-interface TabPanelProps {
+interface TopNavigationBarProps {
   children?: React.ReactNode;
+  selectedTab: number;
+  setSelectedTab: (value: string) => void;
+  title: string;
   index: number;
   value: number;
 }
 
-const TopNavigationBar: React.FC<NavigationBarProps> = ({ onTabChange }) => {
-  const [value, setValue] = useState(0);
-
+const TopNavigationBar = ({ children, selectedTab, setSelectedTab, title }: TopNavigationBarProps) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     console.log(event);
-    setValue(newValue);
-    onTabChange(newValue);
+    setSelectedTab(newValue.toString());
   };
 
   return (
@@ -36,22 +32,33 @@ const TopNavigationBar: React.FC<NavigationBarProps> = ({ onTabChange }) => {
         }}
       >
         <Typography variant="h4" style={{ padding: "8px", color: "black" }}>
-          Mapping Configurations
+          {title}
         </Typography>
         <Box>
-          <Tabs value={value} onChange={handleChange}>
-            <Tab label="Document Types" />
-            <Tab label="Keywords" />
-            <Tab label="XML Mappings" />
-            <Tab label="Legacy to Onbase" />
-            <Tab label="Activity Log" />
+          <Tabs value={selectedTab} onChange={handleChange}>
+            {children}
           </Tabs>
         </Box>
       </div>
-      {value === 0 && <DocTypes />}
-      {value === 1 && <Keywords />}
+      {/* {value === 0 && <DocTypes />}
+      {value === 1 && <Keywords />} */}
     </>
   );
 };
 
 export default TopNavigationBar;
+
+// const enum Tabs {
+//   DocTypes,
+//   Keywords,
+//   XMLMappings,
+//   LegacyToOnBase,
+//   ActivityLog,
+// }
+
+// Mapping Configurations
+{/* <Tab label="Document Types" />
+<Tab label="Keywords" />
+<Tab label="XML Mappings" />
+<Tab label="Legacy to Onbase" />
+<Tab label="Activity Log" /> */}
