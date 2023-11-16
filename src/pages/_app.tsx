@@ -18,7 +18,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <Helmet>
           <div>
             <SideNav />
-            <div style={{ margin: '40px', marginTop: '120px' }}>
+            <div style={{ margin: "40px", marginTop: "120px" }}>
               <Component {...pageProps} />
             </div>
           </div>
