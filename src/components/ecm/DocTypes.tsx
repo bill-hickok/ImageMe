@@ -1,17 +1,13 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-import Head from "next/head";
-import { api } from "~/utils/api";
-import { FormikValues } from "formik";
 import AppTextInput from "~/components/common/form/AppTextInput";
 import AppRadioInput from "~/components/common/form/AppRadioInput";
 import AppTextbox from "~/components/common/form/AppTextbox";
 import Button from "@mui/material/Button";
 import Form from "../common/form/form";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
-  
+
   const genderOptions = [
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },
