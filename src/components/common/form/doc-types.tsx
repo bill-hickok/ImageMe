@@ -65,22 +65,22 @@ const DocTypes = () => {
       headerClassName: "header-cell",
       cellClassName: "bold-cell",
     },
-    {
-      field: "Actions",
-      type: "actions",
-      width: 80,
-      getActions: (params) => [
-        <GridActionsCellItem
-          icon={(
-            <Tooltip title="Details">
-              <EditIcon />
-            </Tooltip>
-          )}
-          label="See doc details"
-          onClick={handleOpenModal}
-        />,
-      ],
-    },
+    // {
+    //   field: "Actions",
+    //   type: "actions",
+    //   width: 80,
+    //   getActions: (params) => [
+    //     <GridActionsCellItem
+    //       icon={(
+    //         <Tooltip title="Details">
+    //           <EditIcon />
+    //         </Tooltip>
+    //       )}
+    //       label="See doc details"
+    //       onClick={handleOpenModal}
+    //     />,
+    //   ],
+    // },
   ];
 
   useEffect(() => setRows(DocTypesAPI.getAll()), [setRows]);

@@ -10,6 +10,8 @@ import {
   TabsEnum,
   getTabComponent,
 } from "~/components/common/enums/top-nav-enums";
+import { FormikValues } from "formik";
+import AppDatePicker from "~/components/common/form/AppDatePicker";
 
 export default function Home() {
   const [tab, setTab] = useState<TabsEnum>(TabsEnum.DocTypes);
@@ -60,33 +62,17 @@ export default function Home() {
             <AppTextInput label="Name" name="name" type="" />
             <AppTextInput label="Email" name="email" type="email" />
             <AppTextInput label="Password" name="password" type="password" />
-            <AppRadioInput
-              label="Gender"
-              name="gender"
-              options={genderOptions}
-            />
             <AppTextbox label="Description" name="description" />
             <Modal open={isModalOpen} handleClose={handleCloseModal} title={"Test Modal"}>
-              <Form
-                handleSubmit={function (values: FormikValues): void {
-                  throw new Error("Function not implemented.");
-                }}
-                handleChanged={function (values: FormikValues): void {
-                  throw new Error("Function not implemented.");
-                }}
-              >
-                <div>
-                  <AppTextInput label="Name" name="name" type="" />
-                  <AppTextInput label="Email" name="email" type="email" />
-                  <AppTextInput label="Password" name="password" type="password" />
-                  <AppRadioInput
-                    label="Gender"
-                    name="gender"
-                    options={genderOptions}
-                  />
-                  <AppTextbox label="Description" name="description" />
-                </div>
-              </Form>
+              <AppRadioInput
+                label="Gender"
+                name="gender"
+                options={genderOptions}
+              />
+              <AppDatePicker
+                label="Date"
+                name="date"
+              />
             </Modal>
             <Button variant="text" onClick={handleOpenModal}>Open Modal</Button>
           </div>

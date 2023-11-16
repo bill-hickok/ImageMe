@@ -13,8 +13,7 @@ const AppTextInput: React.FC<FormInputProps> = ({
     name,
     type, 
 }) => (
-  <div>
-    {/* <label htmlFor={name}>{label}:</label> */}
+  <div className="my-2">
     <Field name={name}>
       {({ field, meta }: FieldProps) => (
         <div>

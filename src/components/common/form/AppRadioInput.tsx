@@ -11,7 +11,6 @@ interface RadioGroupInputProps {
 
 const AppRadioInput: React.FC<RadioGroupInputProps> = ({ label, name, options }) => (
   <div>
-    <label>{label}:</label>
     <Field name={name}>
       {({ field, meta }: FieldProps) => (
         <div>
