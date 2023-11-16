@@ -6,6 +6,7 @@ import SideNav from "src/components/layout/side-nav";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import Helmet from "~/components/auth/Helmet";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -13,9 +14,15 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <SideNav />
-      <div style={{ margin: "40px", marginTop: "120px" }}>
-        <Component {...pageProps} />
+      <div>
+        <Helmet>
+          <div>
+            <SideNav />
+            <div style={{ margin: "40px", marginTop: "120px" }}>
+              <Component {...pageProps} />
+            </div>
+          </div>
+        </Helmet>
       </div>
     </SessionProvider>
   );
