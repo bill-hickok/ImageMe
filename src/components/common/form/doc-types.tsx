@@ -86,7 +86,7 @@ const DocTypes = () => {
   useEffect(() => setRows(DocTypesAPI.getAll()), [setRows]);
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div className="my-4" style={{ marginTop: "100px" }}>
       <Button variant="contained">Add New Doc Type +</Button>
       <AppDataGrid rows={rows} columns={columns} />
       {/* <Modal open={true} handleClose={handleCloseModal} title={"Test Modal"}> */}
