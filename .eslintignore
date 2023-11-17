@@ -1,0 +1,5 @@
+# ESLint Ignore File
+# This tells ESLint to ignore all files within the specified directories
+
+# Ignore everything in the 'store' directory within the 'src' folder
+src/store/

@@ -41,6 +41,7 @@ export default function TemporaryDrawer() {
         {[
           { text: "Home", route: "" },
           { text: "ECM Department", route: "ecm" },
+          { text: "Pet Department", route: "pet" },
           { text: "Other Departments", route: "other" },
         ].map((obj) => (
           <ListItem

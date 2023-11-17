@@ -19,8 +19,6 @@ const TopNavigationBar: React.FC<TopNavigationBarProps> = (props) => {
     onTabChange(newValue);
   };
 
-  console.log("HERE");
-
   return (
     <>
       <div
