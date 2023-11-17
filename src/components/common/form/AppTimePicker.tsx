@@ -1,21 +1,21 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import { Field, useField, useFormikContext } from 'formik';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { TimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-type FormDatePickerProps = ComponentPropsWithoutRef<'form'> & {
+type FormTimePickerProps = ComponentPropsWithoutRef<'form'> & {
   disabled?: boolean;
   label: string;
   name: string;
 };
 
-const AppDatePicker = ({
+const AppTimePicker = ({
   children,
   disabled,
   label,
   name,
   ...props
-}: FormDatePickerProps) => {
+}: FormTimePickerProps) => {
   const { setFieldValue } = useFormikContext();
   const [field, fieldMeta] = useField(name);
 
@@ -24,9 +24,9 @@ const AppDatePicker = ({
   };
 
   return (
-    <div className="my-8">
+    <div className="my-8 mx-8">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
+        <TimePicker
           value={field.value || null}
           onChange={handleChange}
           label={label}
@@ -38,4 +38,4 @@ const AppDatePicker = ({
   );
 }
 
-export default AppDatePicker;
+export default AppTimePicker;

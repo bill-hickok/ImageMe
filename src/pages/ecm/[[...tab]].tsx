@@ -12,6 +12,7 @@ import {
 } from "~/components/common/enums/top-nav-enums";
 import { FormikValues } from "formik";
 import AppDatePicker from "~/components/common/form/AppDatePicker";
+import AppTimePicker from "~/components/common/form/AppTimePicker";
 
 export default function Home() {
   const [tab, setTab] = useState<TabsEnum>(TabsEnum.DocTypes);
@@ -72,6 +73,10 @@ export default function Home() {
               <AppDatePicker
                 label="Date"
                 name="date"
+              />
+              <AppTimePicker
+                label="Time"
+                name="time"
               />
             </Modal>
             <Button variant="text" onClick={handleOpenModal}>Open Modal</Button>
