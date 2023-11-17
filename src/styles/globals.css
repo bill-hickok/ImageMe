@@ -2,6 +2,18 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+h1 {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 68px; /* 113.333% */
+}
+
 h2 {
   color: #25292d;
   font-feature-settings:
@@ -14,6 +26,18 @@ h2 {
   line-height: 38px; /* 118.75% */
 }
 
+h3 {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+}
+
 h4 {
   color: #25292d;
   font-feature-settings:
@@ -24,4 +48,89 @@ h4 {
   font-style: normal;
   font-weight: 700;
   line-height: 26px; /* 130% */
+}
+
+h5 {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+h6 {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29px;
+}
+
+.introParagraph {
+  width: 587px;
+  height: 27.062px;
+  flex-shrink: 0;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29px;
+}
+
+.paragraph {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29px;
+}
+
+.xsParagraph {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.label {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px; /* 100% */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.button {
+  color: #25292d;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29px;
 }
