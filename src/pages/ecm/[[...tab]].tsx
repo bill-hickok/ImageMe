@@ -27,6 +27,7 @@ export default function Home() {
   ];
 
   const changeTab = (tab: TabsEnum) => {
+    console.log("HERE", tabChildren);
     setTab(tab);
     setTabChildren(getTabComponent(tab));
   };
@@ -52,10 +53,10 @@ export default function Home() {
           {tabChildren}
         </TopNavigationBar>
         <Form
-          handleSubmit={function (values: FormikValues): void {
+          handleSubmit={function (_values: FormikValues): void {
             throw new Error("Function not implemented.");
           }}
-          handleChanged={function (values: FormikValues): void {
+          handleChanged={function (_values: FormikValues): void {
             throw new Error("Function not implemented.");
           }}
         >

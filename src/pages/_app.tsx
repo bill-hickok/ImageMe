@@ -2,6 +2,8 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import SideNav from "src/components/layout/side-nav";
+import { Provider } from 'react-redux';
+import { store } from '~/store/store';
 
 import { api } from "~/utils/api";
 
@@ -14,7 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <div>
+      <Provider store={store}>
         <Helmet>
           <div>
             <SideNav />
@@ -23,7 +25,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
             </div>
           </div>
         </Helmet>
-      </div>
+      </Provider>
     </SessionProvider>
   );
 };
