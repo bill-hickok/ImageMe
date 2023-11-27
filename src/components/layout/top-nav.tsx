@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { AppBar, Tabs, Tab, Typography, Box } from "@mui/material";
-import DocTypes from "../common/form/doc-types";
-import XmlMappings from "../common/form/keywords";
-import Keywords from "../common/form/keywords";
+import React from "react";
+import { Tabs, Tab, Typography, Box } from "@mui/material";
 import { TabsEnum } from "../common/enums/top-nav-enums";
 
 interface TopNavigationBarProps {
@@ -38,6 +35,7 @@ const TopNavigationBar: React.FC<TopNavigationBarProps> = (props) => {
           <Tabs value={selectedTab} onChange={handleChange} centered>
             <Tab label="Doc Types" value={TabsEnum.DocTypes} />
             <Tab label="Keywords" value={TabsEnum.Keywords} />
+            <Tab label="Cat Breeds" value={TabsEnum.CatBreeds} />
             <Tab label="XML Mappings" value={TabsEnum.XMLMappings} />
             <Tab label="Legacy To OnBase" value={TabsEnum.LegacyToOnBase} />
             <Tab label="Activity Log" value={TabsEnum.ActivityLog} />

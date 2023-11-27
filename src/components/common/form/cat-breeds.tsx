@@ -2,11 +2,10 @@
 import React, { useEffect, useState } from "react";
 import AppDataGrid from "./AppDataGrid";
 import { type GridColDef } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
-import { CatBreedsAPI } from "../data/cat-breeds";
+import { type CatBreed, CatBreedsAPI } from "../data/cat-breeds";
 
 const CatBreeds = () => {
-  const [rows, setRows] = useState<object[]>([]);
+  const [rows, setRows] = useState<CatBreed[]>([]);
 
   const columns: GridColDef[] = [
     {
@@ -17,8 +16,8 @@ const CatBreeds = () => {
       cellClassName: "bold-cell",
     },
     {
-      field: "temperment",
-      headerName: "Temperment",
+      field: "temperament",
+      headerName: "Temperament",
       flex: 1,
       headerClassName: "header-cell",
       cellClassName: "bold-cell",
@@ -39,10 +38,11 @@ const CatBreeds = () => {
     },
   ];
 
-  useEffect(
-    () => CatBreedsAPI.getAll().then((results) => setRows(results)),
-    [setRows],
-  );
+  useEffect(() => {
+    CatBreedsAPI.getAll()
+      .then((results) => setRows(results))
+      .catch((e) => console.error(e));
+  }, [setRows]);
 
   return (
     <div className="my-4" style={{ marginTop: "100px" }}>
