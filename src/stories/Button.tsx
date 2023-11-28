@@ -1,5 +1,6 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import "./button.css";
+import AddIcon from "@mui/icons-material/Add";
 
 interface ButtonProps {
   /**
@@ -7,17 +8,17 @@ interface ButtonProps {
    */
   primary?: boolean;
   /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /**
    * Button contents
    */
   label: string;
+  /**
+   * Include add icon
+   */
+  addIcon?: boolean;
   /**
    * Optional click handler
    */
@@ -29,24 +30,20 @@ interface ButtonProps {
  */
 export const Button = ({
   primary = false,
-  size = 'medium',
-  backgroundColor,
+  size = "medium",
+  addIcon = false,
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary ? "primaryButton" : "secondaryButton";
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={["button", `${size}Button`, mode].join(" ")}
       {...props}
     >
+      {addIcon && <AddIcon />}
       {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
     </button>
   );
 };
