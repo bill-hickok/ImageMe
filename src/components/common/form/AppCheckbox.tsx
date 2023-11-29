@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, ErrorMessage, FieldProps } from 'formik';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
-interface CheckboxGroupInputProps {
+export interface CheckboxGroupInputProps {
   label: string;
   name: string;
   options: { label: string; value: string }[];
