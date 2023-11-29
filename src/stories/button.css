@@ -7,6 +7,15 @@
   flex-shrink: 0;
   border-radius: 8px;
   padding: 3px 11px;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Button Large */
+  font-family: Source Sans 3;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 114.286% */
 }
 
 .button:hover {
@@ -20,6 +29,7 @@
 .primaryButton {
   background: var(--Action-Blue, #0075c9);
   border: 2px solid var(--Action-Blue, #0075c9);
+
   color: var(--White, #fff);
 }
 
