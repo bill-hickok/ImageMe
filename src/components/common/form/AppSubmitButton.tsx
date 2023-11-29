@@ -15,36 +15,36 @@
 // export default AppSubmitButton;
 
 import React, { ComponentPropsWithoutRef } from "react";
-import { makeStyles } from "@mui/styles";
+import AddIcon from "@mui/icons-material/Add";
+import { Button, styled } from "@mui/material";
 
-type NewAppButtonProps = ComponentPropsWithoutRef<"button"> & {
+type NewAppButtonProps = ComponentPropsWithoutRef<typeof Button> & {
   label?: string;
+  primary?: boolean;
+  size?: string;
+  addIcon?: boolean;
 };
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    // Customize your button styles here
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.dark,
-    },
-  },
-}));
-
-const AppSubmitButton = ({ label, ...props }: NewAppButtonProps) => {
-  const classes = useStyles();
-
+const LabeledButton = ({
+  primary = false,
+  size = "medium",
+  addIcon = false,
+  label,
+  ...props
+}: NewAppButtonProps) => {
+  const variant = primary ? "contained" : "outlined";
   return (
-    <Button
-      type="button"
-      className={`${classes.button} button-regular-general-filled`}
-      {...props}
-    >
-      {label ? label : props.children}
+    <Button variant={variant} {...props} size={size} color="primary">
+      {addIcon && <AddIcon />}
+      {label}
     </Button>
   );
 };
 
-export default AppSubmitButton;
+const AppSubmitButton = styled(LabeledButton)(
+  ({ theme }) => `
+  font-family: Source Sans 3;
+ `,
+);
 
+export default AppSubmitButton;

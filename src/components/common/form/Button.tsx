@@ -1,6 +1,6 @@
 import React from "react";
-import "./button.css";
 import AddIcon from "@mui/icons-material/Add";
+import { Button } from "@mui/material";
 
 interface ButtonProps {
   /**
@@ -28,22 +28,18 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+export const CustomButton = ({
   primary = false,
   size = "medium",
   addIcon = false,
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? "primaryButton" : "secondaryButton";
+  const variant = primary ? "contained" : "outlined";
   return (
-    <button
-      type="button"
-      className={["button", `${size}Button`, mode].join(" ")}
-      {...props}
-    >
+    <Button variant={variant} className="button" {...props} size={size}>
       {addIcon && <AddIcon />}
       {label}
-    </button>
+    </Button>
   );
 };
