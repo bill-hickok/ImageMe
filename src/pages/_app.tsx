@@ -1,7 +1,7 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-import SideNav from "src/components/layout/side-nav";
+import SideNavigation from "~/components/layout/SideNavigation";
 import { Provider } from 'react-redux';
 import { store } from '~/store/store';
 
@@ -19,7 +19,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <Provider store={store}>
         <Helmet>
           <div>
-            <SideNav />
+            <SideNavigation />
             <div style={{ margin: "40px", marginTop: "120px" }}>
               <Component {...pageProps} />
             </div>

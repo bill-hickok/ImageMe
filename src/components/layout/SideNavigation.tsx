@@ -15,7 +15,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/router";
 
-export default function TemporaryDrawer() {
+export default function SideNavigation() {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
 

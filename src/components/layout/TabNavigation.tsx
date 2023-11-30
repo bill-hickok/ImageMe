@@ -1,15 +1,15 @@
 import React from "react";
 import { Tabs, Tab, Typography, Box } from "@mui/material";
-import { TabsEnum } from "../common/enums/top-nav-enums";
+import { TabsEnum } from "../../pages/ecm/ecm";
 
-interface TopNavigationBarProps {
+interface TabNavigationProps {
   children?: React.ReactNode;
   selectedTab: TabsEnum;
   onTabChange: (tab: TabsEnum) => void;
   title: string;
 }
 
-const TopNavigationBar: React.FC<TopNavigationBarProps> = (props) => {
+const TabNavigation: React.FC<TabNavigationProps> = (props) => {
   const { children, selectedTab, onTabChange, title } = props;
 
   const handleChange = (event: React.SyntheticEvent, newValue: TabsEnum) => {
@@ -33,18 +33,12 @@ const TopNavigationBar: React.FC<TopNavigationBarProps> = (props) => {
         </Typography>
         <Box>
           <Tabs value={selectedTab} onChange={handleChange} centered>
-            <Tab label="Doc Types" value={TabsEnum.DocTypes} />
-            <Tab label="Keywords" value={TabsEnum.Keywords} />
-            <Tab label="Cat Breeds" value={TabsEnum.CatBreeds} />
-            <Tab label="XML Mappings" value={TabsEnum.XMLMappings} />
-            <Tab label="Legacy To OnBase" value={TabsEnum.LegacyToOnBase} />
-            <Tab label="Activity Log" value={TabsEnum.ActivityLog} />
+            {children}
           </Tabs>
         </Box>
       </div>
-      {children}
     </>
   );
 };
 
-export default TopNavigationBar;
+export default TabNavigation;

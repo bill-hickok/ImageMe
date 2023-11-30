@@ -1,8 +1,9 @@
-import CatBreeds from "../form/cat-breeds";
-import DocTypes from "../form/doc-types";
-import Keywords from "../form/keywords";
+import CatBreeds from "../../components/common/form/cat-breeds";
+import DocTypes from "../../components/common/form/doc-types";
+import Keywords from "../../components/common/form/keywords";
 
 export const enum TabsEnum {
+  Dashboard,
   DocTypes,
   Keywords,
   CatBreeds,
