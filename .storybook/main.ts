@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@bbbtech/storybook-formik/register",
   ],
   framework: {
     name: "@storybook/nextjs",
