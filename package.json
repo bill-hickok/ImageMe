@@ -40,13 +40,14 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@bbbtech/storybook-formik": "^3.0.0",
     "@storybook/addon-essentials": "^7.6.1",
     "@storybook/addon-interactions": "^7.6.1",
     "@storybook/addon-links": "^7.6.1",
     "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.6.1",
     "@storybook/nextjs": "^7.6.1",
-    "@storybook/react": "^7.6.1",
+    "@storybook/react": "^7.6.2",
     "@storybook/testing-library": "^0.2.2",
     "@types/eslint": "^8.44.2",
     "@types/node": "^18.16.0",
